@@ -2,10 +2,10 @@
    1. CONFIGURAÇÕES GERAIS E VARIÁVEIS
    ========================================================================== */
 :root {
-    --cor-fundo: #121212;       /* Preto fosco para o fundo */
-    --cor-superficie: #1e1e1e;   /* Cinza escuro para os cards e seções */
-    --cor-primaria: #fce300;     /* Amarelo vibrante para destaques */
-    --cor-texto-principal: #ffffff;
+    --cor-fundo: #0c0c0c;       /* Preto profundo */
+    --cor-superficie: #161616;   /* Cinza escuro para contraste */
+    --cor-primaria: #fce300;     /* Amarelo Trench */
+    --cor-texto-principal: #e0e0e0;
     --cor-texto-secundario: #a0a0a0;
     --fonte-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -20,34 +20,41 @@ body {
     background-color: var(--cor-fundo);
     color: var(--cor-texto-principal);
     font-family: var(--fonte-principal);
-    line-height: 1.6;
-    padding: 20px;
+    line-height: 1.7;
+    padding: 10px;
 }
 
 /* ==========================================================================
    2. LAYOUT E ESTRUTURA
    ========================================================================== */
 .container {
-    max-width: 900px;
+    max-width: 850px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 15px;
 }
 
 header {
     text-align: center;
-    padding: 40px 0;
-    border-bottom: 2px solid var(--cor-primaria);
+    padding: 50px 0 30px 0;
+    border-bottom: 3px solid var(--cor-primaria);
     margin-bottom: 40px;
 }
 
 header h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
+    color: #ffffff;
 }
 
 header h1 span {
     color: var(--cor-primaria);
+}
+
+header p {
+    color: var(--cor-texto-secundario);
+    font-style: italic;
+    margin-top: 5px;
 }
 
 /* ==========================================================================
@@ -55,65 +62,58 @@ header h1 span {
    ========================================================================== */
 .post-section {
     background-color: var(--cor-superficie);
-    border-left: 4px solid var(--cor-primaria);
-    padding: 30px;
-    margin-bottom: 35px;
-    border-radius: 0 8px 8px 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s ease;
+    border-left: 5px solid var(--cor-primaria);
+    padding: 35px;
+    margin-bottom: 40px;
+    border-radius: 0 12px 12px 0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
 }
 
-/* Efeito sutil ao passar o mouse sobre o tópico */
 .post-section:hover {
-    transform: translateX(5px);
+    transform: translateY(-3px);
 }
 
 .post-section h2 {
     color: var(--cor-primaria);
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .post-section p {
-    color: var(--cor-texto-principal);
-    margin-bottom: 15px;
+    margin-bottom: 18px;
+    text-align: justify;
 }
 
-/* Estilo específico para listas (como a linha do tempo do Tópico 3) */
+/* Estilização das listas dentro dos posts */
 .post-section ul {
     list-style: none;
-    padding-left: 10px;
+    margin-top: 15px;
 }
 
 .post-section li {
-    margin-bottom: 12px;
-    border-left: 2px solid var(--cor-texto-secundario);
-    padding-left: 15px;
+    margin-bottom: 20px;
+    border-left: 2px solid var(--cor-primaria);
+    padding-left: 20px;
 }
 
 .post-section li strong {
-    color: var(--cor-primaria);
+    color: #ffffff;
     display: block;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
 }
 
 /* ==========================================================================
-   4. COMPONENTES EXTRAS (RODAPÉ)
+   4. RODAPÉ
    ========================================================================== */
 footer {
     text-align: center;
-    margin-top: 60px;
-    padding: 20px;
+    margin-top: 80px;
+    padding: 30px 20px;
     color: var(--cor-texto-secundario);
     font-size: 0.9rem;
-    border-top: 1px solid var(--cor-superficie);
-}
-
-footer a {
-    color: var(--cor-primaria);
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
+    border-top: 1px solid #222;
 }
