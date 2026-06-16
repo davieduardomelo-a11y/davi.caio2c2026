@@ -1,0 +1,119 @@
+/* ==========================================================================
+   1. CONFIGURAÇÕES GERAIS E VARIÁVEIS
+   ========================================================================== */
+:root {
+    --cor-fundo: #121212;       /* Preto fosco para o fundo */
+    --cor-superficie: #1e1e1e;   /* Cinza escuro para os cards e seções */
+    --cor-primaria: #fce300;     /* Amarelo vibrante para destaques */
+    --cor-texto-principal: #ffffff;
+    --cor-texto-secundario: #a0a0a0;
+    --fonte-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto-principal);
+    font-family: var(--fonte-principal);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* ==========================================================================
+   2. LAYOUT E ESTRUTURA
+   ========================================================================== */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    padding: 40px 0;
+    border-bottom: 2px solid var(--cor-primaria);
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+header h1 span {
+    color: var(--cor-primaria);
+}
+
+/* ==========================================================================
+   3. SEÇÕES DE CONTEÚDO (ARTIGOS/POSTS)
+   ========================================================================== */
+.post-section {
+    background-color: var(--cor-superficie);
+    border-left: 4px solid var(--cor-primaria);
+    padding: 30px;
+    margin-bottom: 35px;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease;
+}
+
+/* Efeito sutil ao passar o mouse sobre o tópico */
+.post-section:hover {
+    transform: translateX(5px);
+}
+
+.post-section h2 {
+    color: var(--cor-primaria);
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.post-section p {
+    color: var(--cor-texto-principal);
+    margin-bottom: 15px;
+}
+
+/* Estilo específico para listas (como a linha do tempo do Tópico 3) */
+.post-section ul {
+    list-style: none;
+    padding-left: 10px;
+}
+
+.post-section li {
+    margin-bottom: 12px;
+    border-left: 2px solid var(--cor-texto-secundario);
+    padding-left: 15px;
+}
+
+.post-section li strong {
+    color: var(--cor-primaria);
+    display: block;
+    font-size: 1.1rem;
+}
+
+/* ==========================================================================
+   4. COMPONENTES EXTRAS (RODAPÉ)
+   ========================================================================== */
+footer {
+    text-align: center;
+    margin-top: 60px;
+    padding: 20px;
+    color: var(--cor-texto-secundario);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--cor-superficie);
+}
+
+footer a {
+    color: var(--cor-primaria);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
