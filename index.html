@@ -6,10 +6,227 @@
     <title>Twenty One Pilots - Blog Informativo</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
 
     <style>
-        /* Estilização do Botão do Spotify */
+        /* ==========================================
+           1. VARIÁVEIS E RESET BÁSICO
+           ========================================== */
+        :root {
+            --bg-dark: #121212;
+            --card-bg: #1e1e1e;
+            --text-primary: #f5f5f5;
+            --text-secondary: #b3b3b3;
+            --accent-color: #fce100; /* Cor de destaque padrão (Trench) */
+            --accent-red: #ec1c24;
+            --spotify-green: #1DB954;
+        }
+
+        /* Temas Dinâmicos por Era */
+        body.era-blurryface { --accent-color: #ec1c24; }
+        body.era-trench { --accent-color: #fce100; }
+        body.era-sai { --accent-color: #00b4d8; }
+        body.era-clancy { --accent-color: #e63946; }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* ==========================================
+           2. HEADER E SELETOR DE ERAS
+           ========================================== */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #2a2a2a;
+        }
+
+        .titulo-com-imagem {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .titulo-com-imagem span span {
+            color: var(--accent-color);
+            transition: color 0.3s ease;
+        }
+
+        .logo-titulo {
+            width: 50px;
+            height: auto;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        .theme-selector {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .theme-selector p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .btn-era {
+            border: none;
+            padding: 8px 16px;
+            margin: 4px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, filter 0.2s;
+        }
+
+        .btn-era:hover {
+            transform: scale(1.05);
+            filter: brightness(1.2);
+        }
+
+        .btn-blurry { background-color: #ec1c24; color: #fff; }
+        .btn-trench { background-color: #fce100; color: #000; }
+        .btn-sai { background-color: #00b4d8; color: #fff; }
+        .btn-clancy { background-color: #e63946; color: #fff; border: 1px solid #fce100; }
+
+        /* ==========================================
+           3. SEÇÕES E CONTEÚDO
+           ========================================== */
+        .post-section {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .post-section h2 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .post-section p {
+            margin-bottom: 15px;
+            color: #e0e0e0;
+        }
+
+        .post-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .post-section ul li {
+            background-color: rgba(255, 255, 255, 0.03);
+            margin-bottom: 12px;
+            padding: 12px 15px;
+            border-left: 4px solid var(--accent-color);
+            border-radius: 4px;
+            transition: border-color 0.3s ease;
+        }
+
+        /* ==========================================
+           4. ACORDEÃO (EXPANSÍVEL)
+           ========================================== */
+        .accordion-item {
+            margin-bottom: 10px;
+            border-radius: 6px;
+            overflow: hidden;
+            background-color: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--accent-color);
+            transition: border-color 0.3s ease;
+        }
+
+        .accordion-header {
+            width: 100%;
+            padding: 15px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            padding: 0 15px;
+            color: var(--text-secondary);
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 200px;
+            padding: 15px;
+        }
+
+        .accordion-item.active .fa-chevron-down {
+            transform: rotate(180deg);
+            transition: transform 0.3s ease;
+        }
+
+        /* ==========================================
+           5. QUIZ INTERATIVO
+           ========================================== */
+        .quiz-opcoes {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .quiz-btn {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+        .quiz-btn:hover {
+            background-color: #444;
+        }
+
+        /* ==========================================
+           6. CONTAINER DO SPOTIFY E FOOTER
+           ========================================== */
         .spotify-container {
             display: flex;
             flex-direction: column;
@@ -33,20 +250,47 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            color: #1DB954; /* Cor oficial do Spotify */
+            color: var(--spotify-green);
             font-size: 60px;
             text-decoration: none;
             transition: transform 0.2s ease, color 0.2s ease;
         }
 
-        /* Efeito ao passar o mouse */
         .spotify-btn:hover {
             transform: scale(1.15);
             color: #1ed760;
         }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid #2a2a2a;
+            margin-top: 40px;
+        }
+
+        /* Botão Voltar ao Topo */
+        #btnTopo {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: var(--accent-color);
+            color: #000;
+            cursor: pointer;
+            padding: 12px 16px;
+            border-radius: 50%;
+            font-size: 18px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            transition: background-color 0.3s ease;
+        }
     </style>
 </head>
-<body>
+<body class="era-trench">
 
     <div class="container">
         <header>
@@ -55,6 +299,14 @@
                 <span>Twenty One <span>Pilots</span></span>
             </h1>
             <p>Conceitos, histórias e a evolução da banda</p>
+
+            <div class="theme-selector">
+                <p>Mude o tema do site para sua Era favorita:</p>
+                <button onclick="mudarEra('blurryface')" class="btn-era btn-blurry">Blurryface</button>
+                <button onclick="mudarEra('trench')" class="btn-era btn-trench">Trench</button>
+                <button onclick="mudarEra('sai')" class="btn-era btn-sai">Scaled and Icy</button>
+                <button onclick="mudarEra('clancy')" class="btn-era btn-clancy">Clancy</button>
+            </div>
         </header>
 
         <main>
@@ -69,40 +321,86 @@
             <section class="post-section">
                 <h2>2. O Universo de *Trench* e a Lore de Dema</h2>
                 <p>Uma das características mais fascinantes do Twenty One Pilots é a criação de uma mitologia própria e complexa, que ganhou força total no álbum <em>Trench</em> (2018). Através de videoclipes, cartas enigmáticas e sites escondidos na internet, a banda construiu um universo narrativo rico que serve como uma grande metáfora para batalhas internas.</p>
-                <p>Nessa história, <strong>Dema</strong> é uma cidade fictícia e sombria, governed por nove ditadores conhecidos como os Bispos. O líder deles se chama <strong>Nico</strong>. Dema representa a estagnação, o aprisionamento mental e os pensamentos negativos.</p>
-                <p>Fora dos muros de Dema existe uma região selvagem e montanhosa chamada <em>Trench</em> (A Trinchera). É lá que se escondem os <strong>Banditos</strong>, um grupo de rebeldes liderado por Josh Dun que usa roupas camufladas e detalhes em amarelo (a única cor que os Bispos não conseguem enxergar). O protagonista dessa jornada é Clancy, alter ego de Tyler, que tenta constantemente escapar de Dema com a ajuda dos Banditos. Essa narrativa continua a se desdobrar nos álbuns seguintes, prendendo a atenção dos fãs que adoram desvendar mistérios.</p>
+                <p>Nessa história, <strong>Dema</strong> é uma cidade fictícia e sombria, governada por nove ditadores conhecidos como os Bispos. O líder deles se chama <strong>Nico</strong>. Dema representa a estagnação, o aprisionamento mental e os pensamentos negativos.</p>
+                <p>Fora dos muros de Dema existe uma região selvagem e montanhosa chamada <em>Trench</em> (A Trincheira). É lá que se escondem os <strong>Banditos</strong>, um grupo de rebeldes liderado por Josh Dun que usa roupas camufladas e detalhes em amarelo (a única cor que os Bispos não conseguem enxergar). O protagonista dessa jornada é Clancy, alter ego de Tyler, que tenta constantemente escapar de Dema com a ajuda dos Banditos. Essa narrativa continua a se desdobrar nos álbuns seguintes, prendendo a atenção dos fãs que adoram desvendar mistérios.</p>
             </section>
 
             <section class="post-section">
-                <h2>3. Linha do Tempo: A Evolução dos Álbuns e Eras</h2>
-                <p>Para um fã de Twenty One Pilots, cada álbum não é apenas um compilado de músicas, mas sim uma "era" visual e conceitual completamente nova. A evolução da banda pode ser traçada através de seus principais lançamentos:</p>
-                
-                <ul>
-                    <li>
-                        <strong>Twenty One Pilots (2009)</strong>
-                        O álbum de estreia, com uma sonoridade melancólica, marcada por pianos e letras profundamente poéticas e reflexivas.
-                    </li>
-                    <li>
-                        <strong>Vessel (2013)</strong>
-                        O primeiro álbum por uma grande gravadora (Fueled by Ramen). Apresenta clássicos como <em>Holding on to You</em> e <em>Car Radio</em>, misturando pop alternativo, sintetizadores e rap.
-                    </li>
-                    <li>
-                        <strong>Blurryface (2015)</strong>
-                        O divisor de águas que levou a banda ao estrelato global. Com hits como <em>Stressed Out</em> e <em>Ride</em>, o álbum explora as inseguranças de Tyler personificadas no personagem Blurryface.
-                    </li>
-                    <li>
-                        <strong>Trench (2018)</strong>
-                        Considerado por muitos a obra-prima da banda, introduz a complexa história de Dema com um som mais maduro, focado em linhas de baixo marcantes e rock alternativo.
-                    </li>
-                    <li>
-                        <strong>Scaled and Icy (2021)</strong>
-                        Criado durante o período de isolamento social, traz uma estética colorida e uma sonoridade pop aparentemente alegre, mas que esconde mensagens subliminares de controle e propaganda feita pelos Bispos de Dema.
-                    </li>
-                    <li>
-                        <strong>Clancy (2024)</strong>
-                        O capítulo de encerramento da narrativa de Dema, trazendo o retorno do vermelho e do preto com uma sonoridade visceral e cheia de energia.
-                    </li>
-                </ul>
+                <h2>⚡ Quiz da Lore: Teste seu Conhecimento</h2>
+                <p>Quem é o líder dos nove bispos que governam a cidade fictícia de Dema?</p>
+                <div class="quiz-opcoes">
+                    <button class="quiz-btn" onclick="responderQuiz(false, this)">Clancy</button>
+                    <button class="quiz-btn" onclick="responderQuiz(true, this)">Nico</button>
+                    <button class="quiz-btn" onclick="responderQuiz(false, this)">Trash</button>
+                </div>
+                <p id="quiz-resultado" style="margin-top: 15px; font-weight: bold;"></p>
+            </section>
+
+            <section class="post-section">
+                <h2>3. Linha do Tempo Interativa: A Evolução dos Álbuns</h2>
+                <p>Clique nos álbuns abaixo para explorar cada Era:</p>
+
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Twenty One Pilots (2009)</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <p>O álbum de estreia, com uma sonoridade melancólica, marcada por pianos e letras profundamente poéticas e reflexivas.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Vessel (2013)</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <p>O primeiro álbum por uma grande gravadora (Fueled by Ramen). Apresenta clássicos como <em>Holding on to You</em> e <em>Car Radio</em>, misturando pop alternativo, sintetizadores e rap.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Blurryface (2015)</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <p>O divisor de águas que levou a banda ao estrelato global. Com hits como <em>Stressed Out</em> e <em>Ride</em>, o álbum explora as inseguranças de Tyler personificadas no personagem Blurryface.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Trench (2018)</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Considerado por muitos a obra-prima da banda, introduz a complexa história de Dema com um som mais maduro, focado em linhas de baixo marcantes e rock alternativo.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Scaled and Icy (2021)</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Criado durante o período de isolamento social, traz uma estética colorida e uma sonoridade pop aparentemente alegre, mas que esconde mensagens subliminares de controle e propaganda feita pelos Bispos de Dema.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Clancy (2024)</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <p>O capítulo de encerramento da narrativa de Dema, trazendo o retorno do vermelho e do preto com uma sonoridade visceral e cheia de energia.</p>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="post-section">
@@ -135,5 +433,56 @@
         </footer>
     </div>
 
+    <button id="btnTopo" onclick="voltarAoTopo()" title="Voltar ao topo">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // 1. Mudar Era / Tema Dinâmico
+        function mudarEra(era) {
+            document.body.classList.remove('era-blurryface', 'era-trench', 'era-sai', 'era-clancy');
+            document.body.classList.add('era-' + era);
+        }
+
+        // 2. Acordeão Retrátil
+        function toggleAccordion(button) {
+            const item = button.parentElement;
+            item.classList.toggle('active');
+        }
+
+        // 3. Resposta do Quiz
+        function responderQuiz(correto, elemento) {
+            const resultado = document.getElementById('quiz-resultado');
+            const botoes = elemento.parentElement.querySelectorAll('button');
+            
+            botoes.forEach(btn => btn.disabled = true);
+
+            if (correto) {
+                elemento.style.backgroundColor = '#1DB954';
+                elemento.style.color = '#fff';
+                resultado.innerText = 'Correto! Nico (Nicholas Bourbaki) é o principal Bispo que governa Dema.';
+                resultado.style.color = '#1DB954';
+            } else {
+                elemento.style.backgroundColor = '#ec1c24';
+                elemento.style.color = '#fff';
+                resultado.innerText = 'Incorreto! O líder dos Bispos é Nico.';
+                resultado.style.color = '#ec1c24';
+            }
+        }
+
+        // 4. Botão Voltar ao Topo
+        window.onscroll = function() {
+            let btn = document.getElementById("btnTopo");
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        };
+
+        function voltarAoTopo() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
 </body>
 </html>

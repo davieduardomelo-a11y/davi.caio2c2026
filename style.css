@@ -4,16 +4,28 @@
 :root {
     --cor-fundo: #0c0c0c;       /* Preto profundo */
     --cor-superficie: #161616;   /* Cinza escuro para contraste */
-    --cor-primaria: #fce300;     /* Amarelo Trench */
+    --cor-primaria: #fce300;     /* Amarelo Trench por padrão */
     --cor-texto-principal: #e0e0e0;
     --cor-texto-secundario: #a0a0a0;
     --fonte-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --spotify-green: #1DB954;
+    --transicao: 0.3s ease;
 }
+
+/* Suporte para Troca Dinâmica de Eras (JavaScript) */
+body.era-blurryface { --cor-primaria: #ec1c24; }
+body.era-trench     { --cor-primaria: #fce300; }
+body.era-sai        { --cor-primaria: #00b4d8; }
+body.era-clancy     { --cor-primaria: #e63946; }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 img {
@@ -29,30 +41,31 @@ body {
     padding: 10px;
     min-height: 100vh;
     position: relative;
+    transition: background-color var(--transicao);
 }
 
 /* ==========================================================================
-   IMAGEM 02 - CENTRALIZADA NO CANTO DIREITO
+   IMAGEM DE FUNDO - CANTO DIREITO (FIXA)
    ========================================================================== */
 body::after {
     content: "";
     position: fixed;
-    top: 60%; /* Centraliza verticalmente */
+    top: 60%;
     right: 5px;
-    transform: translateY(-50%); /* Alinha perfeitamente o centro da imagem */
-    width: 1000px; /* Tamanho aumentado */
+    transform: translateY(-50%);
+    width: 1000px;
     height: 1000px;
     background-image: url('image/image02.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center right;
-    pointer-events: none; /* Garante que a imagem não atrapalhe cliques */
-    z-index: -1; /* Mantém a imagem atrás do conteúdo */
-    opacity: 0.8; /* Opacidade ajustável */
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.8;
 }
 
 /* ==========================================================================
-   2. LAYOUT E ESTRUTURA
+   2. LAYOUT E CABEÇALHO
    ========================================================================== */
 .container {
     width: 100%;
@@ -69,6 +82,7 @@ header {
     background-color: rgba(22, 22, 22, 0.9);
     backdrop-filter: blur(5px);
     border-radius: 12px 12px 0 0;
+    transition: border-color var(--transicao);
 }
 
 header h1, 
@@ -84,8 +98,9 @@ header h1,
     flex-wrap: wrap;
 }
 
-header h1 span {
+header h1 span span {
     color: var(--cor-primaria);
+    transition: color var(--transicao);
 }
 
 .logo-titulo {
@@ -101,7 +116,42 @@ header p {
 }
 
 /* ==========================================================================
-   3. SEÇÕES DE CONTEÚDO (ARTIGOS/POSTS)
+   3. SELETOR DE ERAS (BOTÕES)
+   ========================================================================== */
+.theme-selector {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.theme-selector p {
+    font-size: 0.9rem;
+    color: var(--cor-texto-secundario);
+    margin-bottom: 10px;
+    font-style: normal;
+}
+
+.btn-era {
+    border: none;
+    padding: 8px 18px;
+    margin: 4px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, filter 0.2s;
+}
+
+.btn-era:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.2);
+}
+
+.btn-blurry { background-color: #ec1c24; color: #ffffff; }
+.btn-trench { background-color: #fce300; color: #000000; }
+.btn-sai    { background-color: #00b4d8; color: #ffffff; }
+.btn-clancy { background-color: #e63946; color: #ffffff; border: 1px solid #fce300; }
+
+/* ==========================================================================
+   4. SEÇÕES DE CONTEÚDO (POSTS)
    ========================================================================== */
 .post-section {
     background-color: rgba(22, 22, 22, 0.92);
@@ -111,7 +161,7 @@ header p {
     margin-bottom: 30px;
     border-radius: 0 12px 12px 0;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform var(--transicao), box-shadow var(--transicao), border-color var(--transicao);
 }
 
 .post-section:hover {
@@ -125,6 +175,7 @@ header p {
     font-size: 1.6rem;
     text-transform: uppercase;
     letter-spacing: 1px;
+    transition: color var(--transicao);
 }
 
 .post-section p {
@@ -141,6 +192,7 @@ header p {
     margin-bottom: 20px;
     border-left: 2px solid var(--cor-primaria);
     padding-left: 15px;
+    transition: border-color var(--transicao);
 }
 
 .post-section li strong {
@@ -151,8 +203,113 @@ header p {
 }
 
 /* ==========================================================================
-   4. RODAPÉ
+   5. COMPONENTES INTERATIVOS (ACORDEÃO E QUIZ)
    ========================================================================== */
+/* Acordeão para os Álbuns */
+.accordion-item {
+    margin-bottom: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-left: 4px solid var(--cor-primaria);
+    transition: border-color var(--transicao);
+}
+
+.accordion-header {
+    width: 100%;
+    padding: 16px;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    text-align: left;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transicao), padding var(--transicao);
+    padding: 0 16px;
+    color: var(--cor-texto-secundario);
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 250px;
+    padding: 16px;
+}
+
+.accordion-item.active .fa-chevron-down {
+    transform: rotate(180deg);
+    transition: transform var(--transicao);
+}
+
+/* Quiz da Lore */
+.quiz-opcoes {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.quiz-btn {
+    background-color: #262626;
+    color: #ffffff;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.quiz-btn:hover:not(:disabled) {
+    background-color: #383838;
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   6. CONTAINER DO SPOTIFY, RODAPÉ E BOTÃO TOPO
+   ========================================================================== */
+.spotify-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    padding: 25px;
+    background-color: rgba(22, 22, 22, 0.95);
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #222;
+}
+
+.spotify-container p {
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.spotify-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--spotify-green);
+    font-size: 60px;
+    text-decoration: none;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.spotify-btn:hover {
+    transform: scale(1.15);
+    color: #1ed760;
+}
+
 footer {
     text-align: center;
     margin-top: 60px;
@@ -164,8 +321,31 @@ footer {
     border-radius: 8px;
 }
 
+/* Botão Voltar ao Topo */
+#btnTopo {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: var(--cor-primaria);
+    color: #000000;
+    cursor: pointer;
+    padding: 12px 16px;
+    border-radius: 50%;
+    font-size: 18px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    transition: background-color var(--transicao), transform 0.2s;
+}
+
+#btnTopo:hover {
+    transform: scale(1.1);
+}
+
 /* ==========================================================================
-   5. DISPOSITIVOS MÓVEIS
+   7. DISPOSITIVOS MÓVEIS
    ========================================================================== */
 @media (max-width: 600px) {
     .post-section {
@@ -176,7 +356,15 @@ footer {
         text-align: left;
     }
 
-    /* Reduz e posiciona no canto em telas menores para não encobrir o texto */
+    .quiz-opcoes {
+        flex-direction: column;
+    }
+
+    .quiz-btn {
+        width: 100%;
+    }
+
+    /* Reduz e posiciona a imagem de fundo no canto inferior em telas pequenas */
     body::after {
         width: 200px;
         height: 200px;
