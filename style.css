@@ -18,10 +18,18 @@
 
 body {
     background-color: var(--cor-fundo);
+    /* Imagem 02 cobrindo o fundo da página toda */
+    background-image: url('image/image02.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
     color: var(--cor-texto-principal);
     font-family: var(--fonte-principal);
     line-height: 1.7;
     padding: 10px;
+    min-height: 100vh;
 }
 
 /* ==========================================================================
@@ -35,20 +43,37 @@ body {
 
 header {
     text-align: center;
-    padding: 50px 0 30px 0;
+    padding: 50px 20px 30px 20px;
     border-bottom: 3px solid var(--cor-primaria);
     margin-bottom: 40px;
+    /* Fundo escuro leve para o header não sumir no background */
+    background-color: rgba(22, 22, 22, 0.9);
+    border-radius: 12px 12px 0 0;
 }
 
-header h1 {
+/* Ajustes no título para alinhar com a Imagem 01 */
+header h1, 
+.titulo-com-imagem {
     font-size: 3rem;
     text-transform: uppercase;
     letter-spacing: 3px;
     color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
 header h1 span {
     color: var(--cor-primaria);
+}
+
+/* Estilização da Imagem 01 ao lado do título */
+.logo-titulo {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
 }
 
 header p {
@@ -61,7 +86,8 @@ header p {
    3. SEÇÕES DE CONTEÚDO (ARTIGOS/POSTS)
    ========================================================================== */
 .post-section {
-    background-color: var(--cor-superficie);
+    /* Fundo semi-transparente para que a image02 apareça sutilmente atrás dos cards */
+    background-color: rgba(22, 22, 22, 0.92);
     border-left: 5px solid var(--cor-primaria);
     padding: 35px;
     margin-bottom: 40px;
@@ -116,4 +142,6 @@ footer {
     color: var(--cor-texto-secundario);
     font-size: 0.9rem;
     border-top: 1px solid #222;
+    background-color: rgba(12, 12, 12, 0.9);
+    border-radius: 8px;
 }
