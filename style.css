@@ -32,22 +32,23 @@ body {
 }
 
 /* ==========================================================================
-   IMAGEM 02 - POSICIONADA NO CANTO DIREITO
+   IMAGEM 02 - CENTRALIZADA NO CANTO DIREITO
    ========================================================================== */
 body::after {
     content: "";
     position: fixed;
-    bottom: 20px;
+    top: 50%; /* Centraliza verticalmente */
     right: 20px;
-    width: 300px; /* Altere este valor para controlar o tamanho */
-    height: 300px;
+    transform: translateY(-50%); /* Alinha perfeitamente o centro da imagem */
+    width: 450px; /* Tamanho aumentado */
+    height: 450px;
     background-image: url('image/image02.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center right;
-    pointer-events: none; /* Garante que a imagem não atrapalhe cliques na página */
-    z-index: -1; /* Mantém a imagem atrás do conteúdo principal */
-    opacity: 0.8; /* Ajuste a transparência se desejar */
+    pointer-events: none; /* Garante que a imagem não atrapalhe cliques */
+    z-index: -1; /* Mantém a imagem atrás do conteúdo */
+    opacity: 0.8; /* Opacidade ajustável */
 }
 
 /* ==========================================================================
@@ -175,11 +176,13 @@ footer {
         text-align: left;
     }
 
-    /* Reduz a imagem de fundo em telas pequenas */
+    /* Reduz e posiciona no canto em telas menores para não encobrir o texto */
     body::after {
-        width: 150px;
-        height: 150px;
+        width: 200px;
+        height: 200px;
+        top: auto;
         bottom: 10px;
         right: 10px;
+        transform: none;
     }
 }
