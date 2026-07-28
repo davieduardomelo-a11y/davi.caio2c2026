@@ -37,11 +37,11 @@ body {
 body::after {
     content: "";
     position: fixed;
-    top: 60%; /* Centraliza verticalmente */
-    right: 10px;
+    top: 50%; /* Centraliza verticalmente */
+    right: 20px;
     transform: translateY(-50%); /* Alinha perfeitamente o centro da imagem */
-    width: 1000px; /* Tamanho aumentado */
-    height: 1000px;
+    width: 450px; /* Tamanho aumentado */
+    height: 450px;
     background-image: url('image/image02.png');
     background-size: contain;
     background-repeat: no-repeat;
