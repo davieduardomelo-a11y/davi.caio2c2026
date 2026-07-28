@@ -38,7 +38,7 @@ body::after {
     content: "";
     position: fixed;
     top: 60%; /* Centraliza verticalmente */
-    right: 20px;
+    right: 30px;
     transform: translateY(-50%); /* Alinha perfeitamente o centro da imagem */
     width: 1000px; /* Tamanho aumentado */
     height: 1000px;
