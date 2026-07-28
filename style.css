@@ -71,7 +71,7 @@ header h1 span {
 
 /* Estilização da Imagem 01 ao lado do título */
 .logo-titulo {
-    height: 50px;
+    height: 100px;
     width: auto;
     object-fit: contain;
 }
