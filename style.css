@@ -45,23 +45,22 @@ body {
 }
 
 /* ==========================================================================
-   IMAGEM DE FUNDO - CANTO DIREITO (FIXA COM image03.jpg)
+   IMAGEM DE FUNDO - TELA INTEIRA (FIXA)
    ========================================================================== */
 body::after {
     content: "";
     position: fixed;
-    top: 60%;
-    right: 5px;
-    transform: translateY(-50%);
-    width: 1000px;
-    height: 1000px;
-    background-image: url('image/image03.jpg'); /* ATUALIZADO AQUI */
-    background-size: contain;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('image/image03.jpg');
+    background-size: cover;          /* Cobre a tela inteira */
+    background-position: center;      /* Centraliza a imagem */
     background-repeat: no-repeat;
-    background-position: center right;
     pointer-events: none;
-    z-index: -1;
-    opacity: 0.8;
+    z-index: -1;                     /* Fica atrás de todo o conteúdo */
+    opacity: 0.3;                    /* Transparência suave para não atrapalhar a leitura */
 }
 
 /* ==========================================================================
@@ -347,14 +346,5 @@ footer {
 
     .post-section p {
         text-align: left;
-    }
-
-    body::after {
-        width: 200px;
-        height: 200px;
-        top: auto;
-        bottom: 10px;
-        right: 10px;
-        transform: none;
     }
 }
