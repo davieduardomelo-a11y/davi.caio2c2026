@@ -45,7 +45,7 @@ body {
 }
 
 /* ==========================================================================
-   IMAGEM DE FUNDO - CANTO DIREITO (FIXA)
+   IMAGEM DE FUNDO - CANTO DIREITO (FIXA COM image03.jpg)
    ========================================================================== */
 body::after {
     content: "";
@@ -55,7 +55,7 @@ body::after {
     transform: translateY(-50%);
     width: 1000px;
     height: 1000px;
-    background-image: url('image/image02.png');
+    background-image: url('image/image03.jpg'); /* ATUALIZADO AQUI */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center right;
