@@ -161,7 +161,7 @@
         .btn-clancy { background-color: #e63946; color: #ffffff; border: 1px solid #fce300; }
 
         /* ==========================================================================
-           4. SEÇÕES DE CONTEÚDO (POSTS)
+           4. SEÇÕES DE CONTEÚDO (POSTS E IMAGEM EM DESTAQUE)
            ========================================================================== */
         .post-section {
             background-color: rgba(22, 22, 22, 0.92);
@@ -210,6 +210,25 @@
             display: block;
             font-size: 1.1rem;
             margin-bottom: 5px;
+        }
+
+        /* Estilo da Imagem da Banda */
+        .destaque-imagem {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .img-banda {
+            max-width: 100%;
+            height: auto;
+            max-height: 400px;
+            border-radius: 8px;
+            filter: drop-shadow(0px 8px 15px rgba(0, 0, 0, 0.6));
+            transition: transform 0.3s ease;
+        }
+
+        .img-banda:hover {
+            transform: scale(1.02);
         }
 
         /* ==========================================================================
@@ -375,6 +394,11 @@
             <section class="post-section">
                 <h2>1. A Origem de Tyler e Josh: Como Tudo Começou</h2>
                 <p>A história do Twenty One Pilots começa em 2009, na cidade de Columbus, Ohio. Inicialmente, a banda foi formada por Tyler Joseph e seus amigos de faculdade, Nick Thomas e Chris Salih. Eles lançaram um álbum independente e começaram a construir um público local. No entanto, devido às rotinas exaustivas, Nick e Chris precisaram deixar o projeto em 2011.</p>
+                
+                <div class="destaque-imagem">
+                    <img src="e535cb88-7d38-4162-82b6-b0598a7c027d-removebg-preview.jpg" alt="Tyler Joseph e Josh Dun - Twenty One Pilots" class="img-banda">
+                </div>
+
                 <p>Foi nesse momento de transição que Tyler se uniu formalmente a Josh Dun, que já era baterista e trabalhava em uma loja de música local. A química musical e a amizade entre os dois foram instantâneas, consolidando o formato de duo que conhecemos hoje.</p>
                 <p>O nome "Twenty One Pilots" foi escolhido por Tyler enquanto ele estudava a peça <em>All My Sons</em> (Todos os Meus Filhos), de Arthur Miller. Na história, um pai toma a decisão consciente de enviar peças defeituosas para aviões de guerra durante a Segunda Guerra Mundial para salvar seu negócio, o que causa a morte de 21 pilotos. Para a banda, o nome serve como um lembrete constante sobre integridade e sobre a importância de tomar as decisões certas, mesmo quando o caminho mais difícil é o escolhido.</p>
             </section>
