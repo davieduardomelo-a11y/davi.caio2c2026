@@ -60,7 +60,7 @@ body::after {
     background-repeat: no-repeat;
     pointer-events: none;
     z-index: -1;                     /* Fica atrás de todo o conteúdo */
-    opacity: 0.3;                    /* Transparência suave para não atrapalhar a leitura */
+    opacity: 0.7;                    /* Transparência suave para não atrapalhar a leitura */
 }
 
 /* ==========================================================================
