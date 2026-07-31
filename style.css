@@ -1,376 +1,542 @@
-/* ==========================================================================
-   1. CONFIGURAÇÕES GERAIS E VARIÁVEIS
-   ========================================================================== */
-:root {
-    --cor-fundo: #0c0c0c;       /* Preto profundo */
-    --cor-superficie: #161616;   /* Cinza escuro para contraste */
-    --cor-primaria: #fce300;     /* Amarelo Trench por padrão */
-    --cor-texto-principal: #e0e0e0;
-    --cor-texto-secundario: #a0a0a0;
-    --fonte-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    --spotify-green: #1DB954;
-    --transicao: 0.3s ease;
-}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twenty One Pilots - Blog Informativo</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-/* Suporte para Troca Dinâmica de Eras (JavaScript) */
-body.era-blurryface { --cor-primaria: #ec1c24; }
-body.era-trench     { --cor-primaria: #fce300; }
-body.era-sai        { --cor-primaria: #00b4d8; }
-body.era-clancy     { --cor-primaria: #e63946; }
+    <style>
+        /* ==========================================================================
+           1. CONFIGURAÇÕES GERAIS E VARIÁVEIS
+           ========================================================================== */
+        :root {
+            --cor-fundo: #0c0c0c;       /* Preto profundo */
+            --cor-superficie: #161616;   /* Cinza escuro para contraste */
+            --cor-primaria: #fce300;     /* Amarelo Trench por padrão */
+            --cor-texto-principal: #e0e0e0;
+            --cor-texto-secundario: #a0a0a0;
+            --fonte-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --spotify-green: #1DB954;
+            --transicao: 0.3s ease;
+        }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        /* Suporte para Troca Dinâmica de Eras (JavaScript) */
+        body.era-blurryface { --cor-primaria: #ec1c24; }
+        body.era-trench     { --cor-primaria: #fce300; }
+        body.era-sai        { --cor-primaria: #00b4d8; }
+        body.era-clancy     { --cor-primaria: #e63946; }
 
-html {
-    scroll-behavior: smooth;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-img {
-    max-width: 100%;
-    height: auto;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-body {
-    background-color: var(--cor-fundo);
-    color: var(--cor-texto-principal);
-    font-family: var(--fonte-principal);
-    line-height: 1.7;
-    padding: 10px;
-    min-height: 100vh;
-    position: relative;
-    transition: background-color var(--transicao);
-}
+        img {
+            max-width: 100%;
+            height: auto;
+        }
 
-/* ==========================================================================
-   IMAGEM DE FUNDO - CANTO DIREITO (FIXA)
-   ========================================================================== */
-body::after {
-    content: "";
-    position: fixed;
-    top: 60%;
-    right: 5px;
-    transform: translateY(-50%);
-    width: 1000px;
-    height: 1000px;
-    background-image: url('image/image02.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center right;
-    pointer-events: none;
-    z-index: -1;
-    opacity: 0.8;
-}
+        body {
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto-principal);
+            font-family: var(--fonte-principal);
+            line-height: 1.7;
+            padding: 10px;
+            min-height: 100vh;
+            position: relative;
+            transition: background-color var(--transicao);
+        }
 
-/* ==========================================================================
-   2. LAYOUT E CABEÇALHO
-   ========================================================================== */
-.container {
-    width: 100%;
-    max-width: 850px;
-    margin: 0 auto;
-    padding: 15px;
-}
+        /* ==========================================================================
+           IMAGEM DE FUNDO - CANTO DIREITO (FIXA)
+           ========================================================================== */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 60%;
+            right: 5px;
+            transform: translateY(-50%);
+            width: 1000px;
+            height: 1000px;
+            background-image: url('image/image02.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center right;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.8;
+        }
 
-header {
-    text-align: center;
-    padding: 40px 20px 30px 20px;
-    border-bottom: 3px solid var(--cor-primaria);
-    margin-bottom: 40px;
-    background-color: rgba(22, 22, 22, 0.9);
-    backdrop-filter: blur(5px);
-    border-radius: 12px 12px 0 0;
-    transition: border-color var(--transicao);
-}
+        /* ==========================================================================
+           2. LAYOUT E CABEÇALHO
+           ========================================================================== */
+        .container {
+            width: 100%;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 15px;
+        }
 
-header h1, 
-.titulo-com-imagem {
-    font-size: clamp(1.8rem, 4vw, 3rem); 
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-}
+        header {
+            text-align: center;
+            padding: 40px 20px 30px 20px;
+            border-bottom: 3px solid var(--cor-primaria);
+            margin-bottom: 40px;
+            background-color: rgba(22, 22, 22, 0.9);
+            backdrop-filter: blur(5px);
+            border-radius: 12px 12px 0 0;
+            transition: border-color var(--transicao);
+        }
 
-header h1 span span {
-    color: var(--cor-primaria);
-    transition: color var(--transicao);
-}
+        header h1, 
+        .titulo-com-imagem {
+            font-size: clamp(1.8rem, 4vw, 3rem); 
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
 
-.logo-titulo {
-    height: clamp(60px, 10vw, 100px);
-    width: auto;
-    object-fit: contain;
-}
+        header h1 span span {
+            color: var(--cor-primaria);
+            transition: color var(--transicao);
+        }
 
-header p {
-    color: var(--cor-texto-secundario);
-    font-style: italic;
-    margin-top: 8px;
-}
+        .logo-titulo {
+            height: clamp(60px, 10vw, 100px);
+            width: auto;
+            object-fit: contain;
+        }
 
-/* ==========================================================================
-   3. SELETOR DE ERAS (BOTÕES)
-   ========================================================================== */
-.theme-selector {
-    text-align: center;
-    margin-top: 25px;
-}
+        header p {
+            color: var(--cor-texto-secundario);
+            font-style: italic;
+            margin-top: 8px;
+        }
 
-.theme-selector p {
-    font-size: 0.9rem;
-    color: var(--cor-texto-secundario);
-    margin-bottom: 10px;
-    font-style: normal;
-}
+        /* ==========================================================================
+           3. SELETOR DE ERAS (BOTÕES)
+           ========================================================================== */
+        .theme-selector {
+            text-align: center;
+            margin-top: 25px;
+        }
 
-.btn-era {
-    border: none;
-    padding: 8px 18px;
-    margin: 4px;
-    border-radius: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform 0.2s, filter 0.2s;
-}
+        .theme-selector p {
+            font-size: 0.9rem;
+            color: var(--cor-texto-secundario);
+            margin-bottom: 10px;
+            font-style: normal;
+        }
 
-.btn-era:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.2);
-}
+        .btn-era {
+            border: none;
+            padding: 8px 18px;
+            margin: 4px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, filter 0.2s;
+        }
 
-.btn-blurry { background-color: #ec1c24; color: #ffffff; }
-.btn-trench { background-color: #fce300; color: #000000; }
-.btn-sai    { background-color: #00b4d8; color: #ffffff; }
-.btn-clancy { background-color: #e63946; color: #ffffff; border: 1px solid #fce300; }
+        .btn-era:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.2);
+        }
 
-/* ==========================================================================
-   4. SEÇÕES DE CONTEÚDO (POSTS)
-   ========================================================================== */
-.post-section {
-    background-color: rgba(22, 22, 22, 0.92);
-    backdrop-filter: blur(4px);
-    border-left: 5px solid var(--cor-primaria);
-    padding: 30px;
-    margin-bottom: 30px;
-    border-radius: 0 12px 12px 0;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-    transition: transform var(--transicao), box-shadow var(--transicao), border-color var(--transicao);
-}
+        .btn-blurry { background-color: #ec1c24; color: #ffffff; }
+        .btn-trench { background-color: #fce300; color: #000000; }
+        .btn-sai    { background-color: #00b4d8; color: #ffffff; }
+        .btn-clancy { background-color: #e63946; color: #ffffff; border: 1px solid #fce300; }
 
-.post-section:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 14px 25px rgba(0, 0, 0, 0.7);
-}
+        /* ==========================================================================
+           4. SEÇÕES DE CONTEÚDO (POSTS E IMAGEM EM DESTAQUE)
+           ========================================================================== */
+        .post-section {
+            background-color: rgba(22, 22, 22, 0.92);
+            backdrop-filter: blur(4px);
+            border-left: 5px solid var(--cor-primaria);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 0 12px 12px 0;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            transition: transform var(--transicao), box-shadow var(--transicao), border-color var(--transicao);
+        }
 
-.post-section h2 {
-    color: var(--cor-primaria);
-    margin-bottom: 18px;
-    font-size: 1.6rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: color var(--transicao);
-}
+        .post-section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 25px rgba(0, 0, 0, 0.7);
+        }
 
-.post-section p {
-    margin-bottom: 18px;
-    text-align: justify;
-}
+        .post-section h2 {
+            color: var(--cor-primaria);
+            margin-bottom: 18px;
+            font-size: 1.6rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color var(--transicao);
+        }
 
-.post-section ul {
-    list-style: none;
-    margin-top: 15px;
-}
+        .post-section p {
+            margin-bottom: 18px;
+            text-align: justify;
+        }
 
-.post-section li {
-    margin-bottom: 20px;
-    border-left: 2px solid var(--cor-primaria);
-    padding-left: 15px;
-    transition: border-color var(--transicao);
-}
+        .post-section ul {
+            list-style: none;
+            margin-top: 15px;
+        }
 
-.post-section li strong {
-    color: #ffffff;
-    display: block;
-    font-size: 1.1rem;
-    margin-bottom: 5px;
-}
+        .post-section li {
+            margin-bottom: 20px;
+            border-left: 2px solid var(--cor-primaria);
+            padding-left: 15px;
+            transition: border-color var(--transicao);
+        }
 
-/* ==========================================================================
-   5. COMPONENTES INTERATIVOS (ACORDEÃO E QUIZ)
-   ========================================================================== */
-/* Acordeão para os Álbuns */
-.accordion-item {
-    margin-bottom: 12px;
-    border-radius: 6px;
-    overflow: hidden;
-    background-color: rgba(255, 255, 255, 0.03);
-    border-left: 4px solid var(--cor-primaria);
-    transition: border-color var(--transicao);
-}
+        .post-section li strong {
+            color: #ffffff;
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
 
-.accordion-header {
-    width: 100%;
-    padding: 16px;
-    background: none;
-    border: none;
-    color: #ffffff;
-    font-size: 1rem;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    text-align: left;
-}
+        /* Estilo da Imagem da Banda */
+        .destaque-imagem {
+            text-align: center;
+            margin: 20px 0;
+        }
 
-.accordion-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height var(--transicao), padding var(--transicao);
-    padding: 0 16px;
-    color: var(--cor-texto-secundario);
-}
+        .img-banda {
+            max-width: 100%;
+            height: auto;
+            max-height: 400px;
+            border-radius: 8px;
+            filter: drop-shadow(0px 8px 15px rgba(0, 0, 0, 0.6));
+            transition: transform 0.3s ease;
+        }
 
-.accordion-item.active .accordion-content {
-    max-height: 250px;
-    padding: 16px;
-}
+        .img-banda:hover {
+            transform: scale(1.02);
+        }
 
-.accordion-item.active .fa-chevron-down {
-    transform: rotate(180deg);
-    transition: transform var(--transicao);
-}
+        /* ==========================================================================
+           5. COMPONENTES INTERATIVOS (ACORDEÃO)
+           ========================================================================== */
+        .accordion-item {
+            margin-bottom: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+            background-color: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--cor-primaria);
+            transition: border-color var(--transicao);
+        }
 
-/* Quiz da Lore */
-.quiz-opcoes {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-top: 15px;
-}
+        .accordion-header {
+            width: 100%;
+            padding: 16px;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            text-align: left;
+        }
 
-.quiz-btn {
-    background-color: #262626;
-    color: #ffffff;
-    border: none;
-    padding: 10px 22px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.2s, transform 0.2s;
-}
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transicao), padding var(--transicao);
+            padding: 0 16px;
+            color: var(--cor-texto-secundario);
+        }
 
-.quiz-btn:hover:not(:disabled) {
-    background-color: #383838;
-    transform: translateY(-2px);
-}
+        .accordion-item.active .accordion-content {
+            max-height: 250px;
+            padding: 16px;
+        }
 
-/* ==========================================================================
-   6. CONTAINER DO SPOTIFY, RODAPÉ E BOTÃO TOPO
-   ========================================================================== */
-.spotify-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 30px;
-    padding: 25px;
-    background-color: rgba(22, 22, 22, 0.95);
-    border-radius: 12px;
-    text-align: center;
-    border: 1px solid #222;
-}
+        .accordion-item.active .fa-chevron-down {
+            transform: rotate(180deg);
+            transition: transform var(--transicao);
+        }
 
-.spotify-container p {
-    color: #ffffff;
-    margin-bottom: 15px;
-    font-size: 1.1rem;
-    font-weight: bold;
-}
+        /* ==========================================================================
+           6. CONTAINER DO SPOTIFY, RODAPÉ E BOTÃO TOPO
+           ========================================================================== */
+        .spotify-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 30px;
+            padding: 25px;
+            background-color: rgba(22, 22, 22, 0.95);
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #222;
+        }
 
-.spotify-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--spotify-green);
-    font-size: 60px;
-    text-decoration: none;
-    transition: transform 0.2s, color 0.2s;
-}
+        .spotify-container p {
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
 
-.spotify-btn:hover {
-    transform: scale(1.15);
-    color: #1ed760;
-}
+        .spotify-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--spotify-green);
+            font-size: 60px;
+            text-decoration: none;
+            transition: transform 0.2s, color 0.2s;
+        }
 
-footer {
-    text-align: center;
-    margin-top: 60px;
-    padding: 25px 20px;
-    color: var(--cor-texto-secundario);
-    font-size: 0.9rem;
-    border-top: 1px solid #222;
-    background-color: rgba(12, 12, 12, 0.9);
-    border-radius: 8px;
-}
+        .spotify-btn:hover {
+            transform: scale(1.15);
+            color: #1ed760;
+        }
 
-/* Botão Voltar ao Topo */
-#btnTopo {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 99;
-    border: none;
-    outline: none;
-    background-color: var(--cor-primaria);
-    color: #000000;
-    cursor: pointer;
-    padding: 12px 16px;
-    border-radius: 50%;
-    font-size: 18px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    transition: background-color var(--transicao), transform 0.2s;
-}
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 25px 20px;
+            color: var(--cor-texto-secundario);
+            font-size: 0.9rem;
+            border-top: 1px solid #222;
+            background-color: rgba(12, 12, 12, 0.9);
+            border-radius: 8px;
+        }
 
-#btnTopo:hover {
-    transform: scale(1.1);
-}
+        #btnTopo {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: var(--cor-primaria);
+            color: #000000;
+            cursor: pointer;
+            padding: 12px 16px;
+            border-radius: 50%;
+            font-size: 18px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            transition: background-color var(--transicao), transform 0.2s;
+        }
 
-/* ==========================================================================
-   7. DISPOSITIVOS MÓVEIS
-   ========================================================================== */
-@media (max-width: 600px) {
-    .post-section {
-        padding: 20px;
-    }
+        #btnTopo:hover {
+            transform: scale(1.1);
+        }
 
-    .post-section p {
-        text-align: left;
-    }
+        /* ==========================================================================
+           7. DISPOSITIVOS MÓVEIS
+           ========================================================================== */
+        @media (max-width: 600px) {
+            .post-section {
+                padding: 20px;
+            }
 
-    .quiz-opcoes {
-        flex-direction: column;
-    }
+            .post-section p {
+                text-align: left;
+            }
 
-    .quiz-btn {
-        width: 100%;
-    }
+            body::after {
+                width: 200px;
+                height: 200px;
+                top: auto;
+                bottom: 10px;
+                right: 10px;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body class="era-trench">
 
-    /* Reduz e posiciona a imagem de fundo no canto inferior em telas pequenas */
-    body::after {
-        width: 200px;
-        height: 200px;
-        top: auto;
-        bottom: 10px;
-        right: 10px;
-        transform: none;
-    }
-}
+    <div class="container">
+        <header>
+            <h1 class="titulo-com-imagem">
+                <img src="image/image01.png" alt="Logo Twenty One Pilots" class="logo-titulo">
+                <span>Twenty One <span>Pilots</span></span>
+            </h1>
+            <p>Conceitos, histórias e a evolução da banda</p>
+
+            <div class="theme-selector">
+                <p>Mude o tema do site para sua Era favorita:</p>
+                <button onclick="mudarEra('blurryface')" class="btn-era btn-blurry">Blurryface</button>
+                <button onclick="mudarEra('trench')" class="btn-era btn-trench">Trench</button>
+                <button onclick="mudarEra('sai')" class="btn-era btn-sai">Scaled and Icy</button>
+                <button onclick="mudarEra('clancy')" class="btn-era btn-clancy">Clancy</button>
+            </div>
+        </header>
+
+        <main>
+            
+            <section class="post-section">
+                <h2>1. A Origem de Tyler e Josh: Como Tudo Começou</h2>
+                <p>A história do Twenty One Pilots começa em 2009, na cidade de Columbus, Ohio. Inicialmente, a banda foi formada por Tyler Joseph e seus amigos de faculdade, Nick Thomas e Chris Salih. Eles lançaram um álbum independente e começaram a construir um público local. No entanto, devido às rotinas exaustivas, Nick e Chris precisaram deixar o projeto em 2011.</p>
+                
+                <div class="destaque-imagem">
+                    <img src="e535cb88-7d38-4162-82b6-b0598a7c027d-removebg-preview.jpg" alt="Tyler Joseph e Josh Dun - Twenty One Pilots" class="img-banda">
+                </div>
+
+                <p>Foi nesse momento de transição que Tyler se uniu formalmente a Josh Dun, que já era baterista e trabalhava em uma loja de música local. A química musical e a amizade entre os dois foram instantâneas, consolidando o formato de duo que conhecemos hoje.</p>
+                <p>O nome "Twenty One Pilots" foi escolhido por Tyler enquanto ele estudava a peça <em>All My Sons</em> (Todos os Meus Filhos), de Arthur Miller. Na história, um pai toma a decisão consciente de enviar peças defeituosas para aviões de guerra durante a Segunda Guerra Mundial para salvar seu negócio, o que causa a morte de 21 pilotos. Para a banda, o nome serve como um lembrete constante sobre integridade e sobre a importância de tomar as decisões certas, mesmo quando o caminho mais difícil é o escolhido.</p>
+            </section>
+
+            <section class="post-section">
+                <h2>2. O Universo de *Trench* e a Lore de Dema</h2>
+                <p>Uma das características mais fascinantes do Twenty One Pilots é a criação de uma mitologia própria e complexa, que ganhou força total no álbum <em>Trench</em> (2018). Através de videoclipes, cartas enigmáticas e sites escondidos na internet, a banda construiu um universo narrativo rico que serve como uma grande metáfora para batalhas internas.</p>
+                <p>Nessa história, <strong>Dema</strong> é uma cidade fictícia e sombria, governada por nove ditadores conhecidos como os Bispos. O líder deles se chama <strong>Nico</strong>. Dema representa a estagnação, o aprisionamento mental e os pensamentos negativos.</p>
+                <p>Fora dos muros de Dema existe uma região selvagem e montanhosa chamada <em>Trench</em> (A Trincheira). É lá que se escondem os <strong>Banditos</strong>, um grupo de rebeldes liderado por Josh Dun que usa roupas camufladas e detalhes em amarelo (a única cor que os Bispos não conseguem enxergar). O protagonista dessa jornada é Clancy, alter ego de Tyler, que tenta constantemente escapar de Dema com a ajuda dos Banditos. Essa narrativa continua a se desdobrar nos álbuns seguintes, prendendo a atenção dos fãs que adoram desvendar mistérios.</p>
+            </section>
+
+            <section class="post-section">
+                <h2>3. Linha do Tempo Interativa: A Evolução dos Álbuns</h2>
+                <p>Clique nos álbuns abaixo para explorar cada Era:</p>
+
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Twenty One Pilots (2009)</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <p>O álbum de estreia, com uma sonoridade melancólica, marcada por pianos e letras profundamente poéticas e reflexivas.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Vessel (2013)</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <p>O primeiro álbum por uma grande gravadora (Fueled by Ramen). Apresenta clássicos como <em>Holding on to You</em> e <em>Car Radio</em>, misturando pop alternativo, sintetizadores e rap.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Blurryface (2015)</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <p>O divisor de águas que levou a banda ao estrelato global. Com hits como <em>Stressed Out</em> e <em>Ride</em>, o álbum explora as inseguranças de Tyler personificadas no personagem Blurryface.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Trench (2018)</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Considerado por muitos a obra-prima da banda, introduz a complexa história de Dema com um som mais maduro, focado em linhas de baixo marcantes e rock alternativo.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Scaled and Icy (2021)</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Criado durante o período de isolamento social, traz uma estética colorida e uma sonoridade pop aparentemente alegre, mas que esconde mensagens subliminares de controle e propaganda feita pelos Bispos de Dema.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Clancy (2024)</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <p>O capítulo de encerramento da narrativa de Dema, trazendo o retorno do vermelho e do preto com uma sonoridade visceral e cheia de energia.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="post-section">
+                <h2>4. A Identidade Visual: Máscaras, Cores e Símbolos</h2>
+                <p>O aspecto visual do Twenty One Pilots é tão importante quanto a música. Desde o início, a banda utiliza símbolos e elementos cênicos para se comunicar com o público e dar pistas sobre o significado de suas músicas.</p>
+                <p>O logotipo principal da banda passou por várias adaptações ao longo dos anos, mudando de cor e formato a cada nova era, simbolizando a própria evolução dos artistas. Outro elemento visual marcante é o uso de <strong>máscaras e passa-montanhas (balaclavas)</strong> nos palcos. Segundo Tyler, o uso de máscaras serve para que a música seja desassociada de seus rostos, permitindo que qualquer pessoa no público se sinta no lugar deles.</p>
+                <p>As cores também ditam as regras de cada era:</p>
+                <ul>
+                    <li><strong>Vermelho e Preto (Blurryface):</strong> Representam a ansiedade e a insegurança. Tyler pintava o pescoço e as mãos de preto no palco para simbolizar o medo de que suas criações fossem ruins.</li>
+                    <li><strong>Amarelo e Verde Oliva (Trench):</strong> O amarelo representa a esperança, a resistência e a luz necessária para escapar da escuridão de Dema.</li>
+                    <li><strong>Rosa e Azul Celeste (Scaled and Icy):</strong> Cores vibrantes que representam uma falsa sensação de felicidade e a ilusão de controle.</li>
+                </ul>
+            </section>
+
+            <section class="spotify-container">
+                <p>Ouça Twenty One Pilots no Spotify:</p>
+                <a class="spotify-btn" 
+                   href="https://open.spotify.com/artist/3YQKm39K3P3IB29C32Y3To" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   title="Ouvir Twenty One Pilots no Spotify">
+                    <i class="fa-brands fa-spotify"></i>
+                </a>
+            </section>
+
+        </main>
+
+        <footer>
+            <p>Desenvolvido por Caio Serafim e Davi Eduardo</p>
+        </footer>
+    </div>
+
+    <button id="btnTopo" onclick="voltarAoTopo()" title="Voltar ao topo">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mudar Era / Tema Dinâmico
+        function mudarEra(era) {
+            document.body.classList.remove('era-blurryface', 'era-trench', 'era-sai', 'era-clancy');
+            document.body.classList.add('era-' + era);
+        }
+
+        // Acordeão Retrátil
+        function toggleAccordion(button) {
+            const item = button.parentElement;
+            item.classList.toggle('active');
+        }
+
+        // Botão Voltar ao Topo
+        window.onscroll = function() {
+            let btn = document.getElementById("btnTopo");
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        };
+
+        function voltarAoTopo() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
